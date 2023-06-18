@@ -190,10 +190,13 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    // Create a get request from a url
+
+                    try {
+
+                       // Create a get request from a url
                     final response = await http.post(
-                      Uri.parse('http://localhost:3000/api/weather_processing'), // dev
-                      //Uri.parse('https://v-server-2wp0lxf5a-cdalsoniii.vercel.app/api/hello'),
+                      //Uri.parse('http://localhost:3000/api/weather_processing'), // dev
+                      Uri.parse('https://v-server-cdalsoniii.vercel.app/api/weather_processing'), // prod
                       body: jsonEncode(<String, dynamic>{
                         'zipCode': this.zipCode,
                         'opinion': this.opinion,
@@ -201,8 +204,14 @@ class _WeatherWidgetState extends State<WeatherWidget> {
 
                       );
 
-                    
-                    print(response.body);
+                      print("response: " + this.zipCode.toString());
+                      print("opinion: " + this.opinion.toString());
+
+                    } catch (e) {
+                      print("error: $e");
+                    }
+                   
+                    /*
                     // Parse the response body
                     final parsed = jsonDecode(response.body);
                     print(parsed);
@@ -222,6 +231,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                       print("uv: $uv");
 
                   });
+                  */
 
                   },
                   text: 'Get Forecast',

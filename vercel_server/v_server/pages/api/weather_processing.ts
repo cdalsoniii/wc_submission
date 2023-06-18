@@ -106,13 +106,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { body } = req;
   console.log("body", body, "body json: ", JSON.stringify(body));
   // parse body to json
-  const body_json = JSON.parse(body);
-  console.log('zipcode:', body_json['zipCode']);
+  
+  //const body_json = JSON.parse(body);
+  const body_json = body;
+  console.log('body json:', body_json);
+  console.log(body_json.opinion, body_json.zipCode)
+  //console.log('zipcode:', body_json['zipCode']);
   const forecast_data = await getForecast(body_json['zipCode']);
   const writeRes = writeOpinion(body_json['zipCode'], body_json['opinion']);
   writeMongo(body_json['zipCode'], body_json['opinion'])
   
-  console.log("writeRes", writeRes);
+  console.log("forecas data", forecast_data);
 
   res.status(200).json(forecast_data['forecast']);
 
