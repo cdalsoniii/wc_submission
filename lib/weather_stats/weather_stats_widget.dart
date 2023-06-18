@@ -257,7 +257,9 @@ class _WeatherStatsWidgetState extends State<WeatherStatsWidget> {
                           wrapWithModel(
                             model: _model.weatherStatsComponentModel,
                             updateCallback: () => setState(() {}),
-                            child: WeatherStatsComponentWidget(),
+                            child: WeatherStatsComponentWidget(
+
+                              ),
                           ),
                         ],
                       ),

@@ -8,6 +8,8 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'index.dart';
 
 void main() async {
@@ -15,6 +17,8 @@ void main() async {
   usePathUrlStrategy();
 
   await SupaFlow.initialize();
+
+  await Hive.initFlutter();
 
   await FlutterFlowTheme.initialize();
 

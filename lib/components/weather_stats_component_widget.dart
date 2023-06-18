@@ -10,7 +10,10 @@ import 'weather_stats_component_model.dart';
 export 'weather_stats_component_model.dart';
 
 class WeatherStatsComponentWidget extends StatefulWidget {
-  const WeatherStatsComponentWidget({Key? key}) : super(key: key);
+  const WeatherStatsComponentWidget({
+    Key? key,r
+
+    }) : super(key: key);
 
   @override
   _WeatherStatsComponentWidgetState createState() =>
@@ -20,6 +23,9 @@ class WeatherStatsComponentWidget extends StatefulWidget {
 class _WeatherStatsComponentWidgetState
     extends State<WeatherStatsComponentWidget> with TickerProviderStateMixin {
   late WeatherStatsComponentModel _model;
+  int? todays_high;
+  int? todays_low;
+  int? todays_chance_of_rainfall;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,11 +37,12 @@ class _WeatherStatsComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => WeatherStatsComponentModel());
+     // Set the state using the weather data
   }
 
   @override
   void dispose() {
-    _model.maybeDispose();
+    //_model.maybeDispose();
 
     super.dispose();
   }
@@ -107,7 +114,7 @@ class _WeatherStatsComponentWidgetState
                             ),
                           ),
                           Text(
-                            'Today\'s High',
+                            'Today\'s High in F',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .labelSmall
@@ -158,7 +165,58 @@ class _WeatherStatsComponentWidgetState
                             ),
                           ),
                           Text(
-                            'Today\'s Low',
+                            'Today\'s High in F',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .labelSmall
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: 160.0,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF1F4F8),
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          12.0, 12.0, 12.0, 12.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.supervisor_account_rounded,
+                            color: Color(0xFF101213),
+                            size: 44.0,
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 4.0),
+                            child: Text(
+                              '56.4k',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: Color(0xFF101213),
+                                    fontSize: 36.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ),
+                          Text(
+                            'Today\'s Low in F',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .labelSmall
